@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="En Vichet - Full-Stack Developer & UI/UX Designer Portfolio">
-<title>En Vichet | Personal Portfolio</title>
+<meta name="keywords" content="portfolio, web developer, UI/UX designer, En Vichet, Cambodia">
+<meta name="author" content="En Vichet">
+<meta name="robots" content="index, follow">
+<title>En Vichet | Full-Stack Developer & UI/UX Designer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -23,6 +27,7 @@
   --white: #ffffff;
   --success-color: #28a745;
   --warning-color: #ffc107;
+  --info-color: #17a2b8;
   --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   --box-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.12);
@@ -187,8 +192,12 @@ section {
   color: white;
 }
 
-.btn-outline::before {
-  display: none;
+.btn-secondary {
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+}
+
+.btn-download {
+  background: linear-gradient(135deg, var(--info-color), #138496);
 }
 
 .text-center {
@@ -466,6 +475,30 @@ nav {
   flex-wrap: wrap;
 }
 
+.badges {
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  background: var(--white);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+
+.badge:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
 /* About Section */
 .about {
   background: var(--white);
@@ -564,6 +597,236 @@ nav {
   font-weight: 600;
   font-size: 1.1rem;
   color: var(--dark-color);
+}
+
+/* Hobbies Section */
+.hobbies-section {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+}
+
+[data-theme="dark"] .hobbies-section {
+  background: linear-gradient(135deg, #0f0f1a 0%, #121224 100%);
+}
+
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.hobby-card {
+  background: var(--white);
+  padding: 35px 25px;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+[data-theme="dark"] .hobby-card {
+  background: var(--light-gray);
+}
+
+.hobby-card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: var(--box-shadow-hover);
+  border-color: var(--primary-color);
+}
+
+.hobby-icon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hobby-card h3 {
+  margin-bottom: 15px;
+  color: var(--dark-color);
+}
+
+.hobby-card p {
+  color: var(--gray-color);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Education Section */
+.education {
+  background: var(--white);
+}
+
+[data-theme="dark"] .education {
+  background: var(--light-color);
+}
+
+.education-timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 60px auto 0;
+}
+
+.education-timeline::before {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+  border-radius: 3px;
+}
+
+.education-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: var(--transition);
+}
+
+.education-item.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.education-item:nth-child(odd) {
+  left: 0;
+  transform: translateX(-30px);
+}
+
+.education-item:nth-child(even) {
+  left: 50%;
+  transform: translateX(30px);
+}
+
+.education-item:nth-child(odd).visible {
+  transform: translateX(0);
+}
+
+.education-item:nth-child(even).visible {
+  transform: translateX(0);
+}
+
+.education-content {
+  padding: 30px;
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+  position: relative;
+  transition: var(--transition);
+}
+
+[data-theme="dark"] .education-content {
+  background: var(--light-gray);
+}
+
+.education-item:hover .education-content {
+  transform: scale(1.02);
+  box-shadow: var(--box-shadow-hover);
+}
+
+.education-content::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: var(--white);
+  top: 25px;
+  transform: rotate(45deg);
+  box-shadow: -3px -3px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .education-content::after {
+  background: var(--light-gray);
+}
+
+.education-item:nth-child(odd) .education-content::after {
+  right: -12px;
+}
+
+.education-item:nth-child(even) .education-content::after {
+  left: -12px;
+}
+
+.education-item::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background: var(--white);
+  border: 5px solid var(--primary-color);
+  border-radius: 50%;
+  top: 25px;
+  z-index: 1;
+  box-shadow: 0 0 15px rgba(58, 134, 255, 0.5);
+  transition: var(--transition);
+}
+
+[data-theme="dark"] .education-item::after {
+  background: var(--light-gray);
+}
+
+.education-item:nth-child(odd)::after {
+  right: -12px;
+}
+
+.education-item:nth-child(even)::after {
+  left: -12px;
+}
+
+.education-item:hover::after {
+  transform: scale(1.3);
+  box-shadow: 0 0 25px rgba(58, 134, 255, 0.8);
+}
+
+.education-date {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+}
+
+.education-content h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: var(--dark-color);
+}
+
+.education-content .degree {
+  color: var(--secondary-color);
+  font-weight: 600;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.achievements {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 2px dashed var(--light-gray);
+}
+
+.achievement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.achievement-item i {
+  color: var(--success-color);
+  font-size: 1.1rem;
+  margin-top: 3px;
 }
 
 /* Skills Section */
@@ -688,6 +951,140 @@ nav {
   border-color: transparent;
 }
 
+/* Experience Section */
+.experience {
+  background: var(--white);
+}
+
+[data-theme="dark"] .experience {
+  background: var(--light-color);
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.experience-card {
+  background: var(--white);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(40px);
+  border: 2px solid transparent;
+  position: relative;
+}
+
+[data-theme="dark"] .experience-card {
+  background: var(--light-gray);
+}
+
+.experience-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  opacity: 0;
+  transition: var(--transition);
+  z-index: -1;
+}
+
+.experience-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience-card:hover {
+  transform: translateY(-20px) scale(1.02);
+  box-shadow: var(--box-shadow-hover);
+  border-color: transparent;
+}
+
+.experience-card:hover::before {
+  opacity: 0.08;
+}
+
+.experience-header {
+  padding: 30px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  position: relative;
+}
+
+.experience-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.experience-header h3 {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.experience-header .company {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+.experience-header .date {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 15px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
+.experience-body {
+  padding: 30px;
+}
+
+.experience-body .role {
+  color: var(--dark-color);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.experience-body ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.experience-body li {
+  padding-left: 25px;
+  position: relative;
+  margin-bottom: 12px;
+  color: var(--gray-color);
+  line-height: 1.7;
+}
+
+.experience-body li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
 /* Projects Section */
 .projects {
   background: var(--white);
@@ -758,6 +1155,7 @@ nav {
   font-size: 4rem;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .project-img::before {
@@ -794,6 +1192,61 @@ nav {
   margin-bottom: 25px;
   line-height: 1.7;
   font-size: 1.05rem;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.tech-tag {
+  background: var(--light-gray);
+  padding: 6px 15px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+[data-theme="dark"] .tech-tag {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tech-tag:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.project-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--light-gray);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.project-link:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(58, 134, 255, 0.3);
+}
+
+.project-link i {
+  font-size: 1.1rem;
 }
 
 .project-status {
@@ -1163,6 +1616,93 @@ textarea.form-control {
   padding-top: 15px;
 }
 
+/* Testimonials Section */
+.testimonials {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f2ff 100%);
+}
+
+[data-theme="dark"] .testimonials {
+  background: linear-gradient(135deg, #0f0f1a 0%, #121224 100%);
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.testimonial-card {
+  background: var(--white);
+  padding: 40px 30px;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--box-shadow);
+  position: relative;
+  transition: var(--transition);
+  border: 2px solid transparent;
+}
+
+[data-theme="dark"] .testimonial-card {
+  background: var(--light-gray);
+}
+
+.testimonial-card::before {
+  content: '"';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 6rem;
+  color: var(--primary-color);
+  opacity: 0.1;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: var(--box-shadow-hover);
+  border-color: var(--primary-color);
+}
+
+.testimonial-content {
+  margin-bottom: 25px;
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--gray-color);
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.author-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.author-info h4 {
+  margin-bottom: 5px;
+  color: var(--dark-color);
+}
+
+.author-info p {
+  color: var(--gray-color);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
 /* Footer */
 footer {
   background: var(--dark-color);
@@ -1305,36 +1845,45 @@ footer::after {
     flex-direction: column;
   }
 
-  .timeline::after {
+  .timeline::after,
+  .education-timeline::before {
     left: 31px;
   }
 
-  .timeline-item {
+  .timeline-item,
+  .education-item {
     width: 100%;
     padding-left: 70px;
     padding-right: 25px;
   }
 
-  .timeline-item:nth-child(even) {
+  .timeline-item:nth-child(even),
+  .education-item:nth-child(even) {
     left: 0;
   }
 
   .timeline-item:nth-child(odd) .timeline-content::after,
-  .timeline-item:nth-child(even) .timeline-content::after {
+  .timeline-item:nth-child(even) .timeline-content::after,
+  .education-item:nth-child(odd) .education-content::after,
+  .education-item:nth-child(even) .education-content::after {
     left: -12px;
     right: auto;
   }
 
-  .timeline-item::after {
+  .timeline-item::after,
+  .education-item::after {
     left: 21px;
   }
 
   .timeline-item:nth-child(odd),
-  .timeline-item:nth-child(even) {
+  .timeline-item:nth-child(even),
+  .education-item:nth-child(odd),
+  .education-item:nth-child(even) {
     transform: translateX(0);
   }
 
-  .timeline-item.visible {
+  .timeline-item.visible,
+  .education-item.visible {
     transform: translateX(0);
   }
 }
@@ -1406,7 +1955,9 @@ footer::after {
     max-width: 300px;
   }
 
-  .projects-grid {
+  .projects-grid,
+  .experience-grid,
+  .testimonials-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1469,16 +2020,19 @@ footer::after {
     font-size: 2.2rem;
   }
 
-  .timeline-item {
+  .timeline-item,
+  .education-item {
     padding-left: 60px;
     padding-right: 15px;
   }
 
-  .timeline-item::after {
+  .timeline-item::after,
+  .education-item::after {
     left: 11px;
   }
 
-  .timeline-content {
+  .timeline-content,
+  .education-content {
     padding: 25px;
   }
 
@@ -1690,7 +2244,9 @@ footer::after {
       <ul class="nav-links" id="nav-links">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#timeline">Timeline</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -1713,6 +2269,14 @@ footer::after {
           <a href="#contact" class="btn btn-outline">
             <i class="fas fa-paper-plane"></i> Contact Me
           </a>
+          <a href="#" class="btn btn-download">
+            <i class="fas fa-download"></i> Download CV
+          </a>
+        </div>
+        <div class="badges">
+          <span class="badge"><i class="fas fa-code"></i> Full-Stack Developer</span>
+          <span class="badge"><i class="fas fa-paint-brush"></i> UI/UX Designer</span>
+          <span class="badge"><i class="fas fa-mobile-alt"></i> Responsive Design</span>
         </div>
       </div>
       <div class="hero-image fade-in">
@@ -1733,6 +2297,7 @@ footer::after {
         <p>I specialize in designing and developing responsive websites and web applications that provide seamless user experiences. With a strong foundation in both design and development, I bring a unique perspective to every project.</p>
         <p>My approach combines technical expertise with creative problem-solving to deliver solutions that not only look great but also perform exceptionally well across all devices and platforms.</p>
         <p>Currently, I'm focused on building my personal brand through this portfolio website project, showcasing my skills and completed work to potential clients and employers.</p>
+        <p><strong>Career Objective:</strong> To leverage my technical skills and creative mindset to build innovative web solutions that solve real-world problems and deliver exceptional user experiences.</p>
       </div>
       <div class="about-stats">
         <div class="stat-item fade-in">
@@ -1756,6 +2321,119 @@ footer::after {
   </div>
 </section>
 
+<!-- Hobbies Section -->
+<section class="hobbies-section">
+  <div class="container">
+    <h2 class="section-title fade-in">Interests & Hobbies</h2>
+    <p class="section-subtitle fade-in">Beyond coding, I enjoy exploring various activities that keep me creative and balanced.</p>
+    <div class="hobbies-grid">
+      <div class="hobby-card fade-in">
+        <div class="hobby-icon">
+          <i class="fas fa-book"></i>
+        </div>
+        <h3>Reading</h3>
+        <p>Technology blogs, programming books, and design magazines to stay updated with industry trends.</p>
+      </div>
+      <div class="hobby-card fade-in">
+        <div class="hobby-icon">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <h3>Gaming</h3>
+        <p>Playing strategy games and exploring game design principles for inspiration.</p>
+      </div>
+      <div class="hobby-card fade-in">
+        <div class="hobby-icon">
+          <i class="fas fa-music"></i>
+        </div>
+        <h3>Music</h3>
+        <p>Listening to various genres and occasionally playing guitar to relax.</p>
+      </div>
+      <div class="hobby-card fade-in">
+        <div class="hobby-icon">
+          <i class="fas fa-running"></i>
+        </div>
+        <h3>Fitness</h3>
+        <p>Regular exercise and outdoor activities to maintain physical and mental health.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education Section -->
+<section class="education" id="education">
+  <div class="container">
+    <h2 class="section-title fade-in">Education</h2>
+    <p class="section-subtitle fade-in">My academic journey and achievements that shaped my professional career.</p>
+    <div class="education-timeline">
+      <div class="education-item fade-in">
+        <div class="education-content">
+          <div class="education-date"><i class="fas fa-graduation-cap"></i> 2022 - 2026</div>
+          <h3>Royal University of Phnom Penh</h3>
+          <span class="degree">Bachelor of Computer Science</span>
+          <p>Majoring in Software Development with focus on web technologies and database systems.</p>
+          <div class="achievements">
+            <h4><i class="fas fa-trophy"></i> Academic Achievements</h4>
+            <div class="achievement-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Dean's List - Top 10% of class</span>
+            </div>
+            <div class="achievement-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Programming Competition Winner 2024</span>
+            </div>
+            <div class="achievement-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Research Assistant - Web Security Project</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="education-item fade-in">
+        <div class="education-content">
+          <div class="education-date"><i class="fas fa-graduation-cap"></i> 2020 - 2022</div>
+          <h3>Phnom Penh International School</h3>
+          <span class="degree">High School Diploma</span>
+          <p>Advanced studies in Mathematics, Computer Science, and English Literature.</p>
+          <div class="achievements">
+            <h4><i class="fas fa-trophy"></i> Extracurricular Activities</h4>
+            <div class="achievement-item">
+              <i class="fas fa-check-circle"></i>
+              <span>President - Coding Club</span>
+            </div>
+            <div class="achievement-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Science Fair Winner 2021</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="education-item fade-in">
+        <div class="education-content">
+          <div class="education-date"><i class="fas fa-certificate"></i> 2023 - 2024</div>
+          <h3>Online Certifications</h3>
+          <span class="degree">Professional Development</span>
+          <p>Completed various online courses to enhance technical skills and stay current with industry trends.</p>
+          <div class="achievements">
+            <h4><i class="fas fa-certificate"></i> Certifications</h4>
+            <div class="achievement-item">
+              <i class="fas fa-check-circle"></i>
+              <span>Full Stack Web Development - Udemy</span>
+            </div>
+            <div class="achievement-item">
+              <i class="fas fa-check-circle"></i>
+              <span>UI/UX Design Fundamentals - Coursera</span>
+            </div>
+            <div class="achievement-item">
+              <i class="fas fa-check-circle"></i>
+              <span>JavaScript Algorithms - freeCodeCamp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Skills Section -->
 <section class="skills-section" id="skills">
   <div class="container">
@@ -1773,6 +2451,8 @@ footer::after {
           <span class="skill-tag">Responsive Design</span>
           <span class="skill-tag">Bootstrap</span>
           <span class="skill-tag">SASS/SCSS</span>
+          <span class="skill-tag">Tailwind CSS</span>
+          <span class="skill-tag">TypeScript</span>
         </div>
       </div>
       <div class="skill-category fade-in">
@@ -1783,9 +2463,11 @@ footer::after {
           <span class="skill-tag">Python</span>
           <span class="skill-tag">Django</span>
           <span class="skill-tag">PHP</span>
+          <span class="skill-tag">Laravel</span>
           <span class="skill-tag">MySQL</span>
           <span class="skill-tag">MongoDB</span>
           <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">GraphQL</span>
         </div>
       </div>
       <div class="skill-category fade-in">
@@ -1799,6 +2481,66 @@ footer::after {
           <span class="skill-tag">Accessibility</span>
           <span class="skill-tag">Typography</span>
           <span class="skill-tag">Color Theory</span>
+          <span class="skill-tag">Design Systems</span>
+          <span class="skill-tag">Framer Motion</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience Section -->
+<section class="experience" id="experience">
+  <div class="container">
+    <h2 class="section-title fade-in">Work Experience</h2>
+    <p class="section-subtitle fade-in">Professional experience and internships that have shaped my career path.</p>
+    <div class="experience-grid">
+      <div class="experience-card fade-in">
+        <div class="experience-header">
+          <h3>Tech Solutions Cambodia</h3>
+          <div class="company">Software Development Intern</div>
+          <div class="date"><i class="fas fa-calendar"></i> Jun 2024 - Aug 2024</div>
+        </div>
+        <div class="experience-body">
+          <div class="role">Full-Stack Development Intern</div>
+          <ul>
+            <li>Developed responsive web applications using React and Node.js</li>
+            <li>Collaborated with senior developers on code reviews and best practices</li>
+            <li>Implemented RESTful APIs and database integration</li>
+            <li>Participated in agile development methodologies and sprint planning</li>
+          </ul>
+        </div>
+      </div>
+      <div class="experience-card fade-in">
+        <div class="experience-header">
+          <h3>Digital Innovations Co.</h3>
+          <div class="company">UI/UX Design Assistant</div>
+          <div class="date"><i class="fas fa-calendar"></i> Jan 2024 - May 2024</div>
+        </div>
+        <div class="experience-body">
+          <div class="role">Design & Development Assistant</div>
+          <ul>
+            <li>Created wireframes and prototypes for client projects using Figma</li>
+            <li>Conducted user research and usability testing sessions</li>
+            <li>Assisted in front-end development with HTML, CSS, and JavaScript</li>
+            <li>Collaborated with cross-functional teams on project deliverables</li>
+          </ul>
+        </div>
+      </div>
+      <div class="experience-card fade-in">
+        <div class="experience-header">
+          <h3>Freelance Projects</h3>
+          <div class="company">Independent Developer</div>
+          <div class="date"><i class="fas fa-calendar"></i> 2023 - Present</div>
+        </div>
+        <div class="experience-body">
+          <div class="role">Full-Stack Developer & Designer</div>
+          <ul>
+            <li>Built custom websites for small businesses and startups</li>
+            <li>Managed end-to-end project lifecycle from concept to deployment</li>
+            <li>Provided technical consultation and ongoing maintenance</li>
+            <li>Developed e-commerce platforms and content management systems</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -1812,39 +2554,81 @@ footer::after {
     <p class="section-subtitle fade-in">Here are some of the projects I've worked on, including this portfolio website project.</p>
     <div class="projects-grid">
       <div class="project-card fade-in">
-        <div class="project-img">
+        <div class="project-img" onclick="showProjectModal('Personal Portfolio Website', 'A fully responsive portfolio website built with HTML, CSS, and JavaScript featuring smooth animations and transitions. This project showcases my skills and completed work.', 'HTML, CSS, JavaScript, Responsive Design')">
           <i class="fas fa-briefcase"></i>
         </div>
         <div class="project-content">
           <span class="project-status status-complete">Completed</span>
           <h3>Personal Portfolio Website</h3>
           <p>A fully responsive portfolio website built with HTML, CSS, and JavaScript featuring smooth animations and transitions. This project showcases my skills and completed work.</p>
+          <div class="project-tech">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">Responsive</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <i class="fas fa-eye"></i> View Live
+            </a>
+            <a href="#" class="project-link">
+              <i class="fab fa-github"></i> Source Code
+            </a>
+          </div>
           <div class="progress-bar">
             <div class="progress" data-width="100"></div>
           </div>
         </div>
       </div>
       <div class="project-card fade-in">
-        <div class="project-img">
+        <div class="project-img" onclick="showProjectModal('E-commerce Platform', 'A full-featured online shopping platform with product catalog, shopping cart, and payment integration. Built with React and Node.js.', 'React, Node.js, MongoDB, Stripe API')">
           <i class="fas fa-shopping-cart"></i>
         </div>
         <div class="project-content">
           <span class="project-status status-complete">Completed</span>
           <h3>E-commerce Platform</h3>
           <p>A full-featured online shopping platform with product catalog, shopping cart, and payment integration. Built with React and Node.js.</p>
+          <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">Express</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <i class="fas fa-eye"></i> View Live
+            </a>
+            <a href="#" class="project-link">
+              <i class="fab fa-github"></i> Source Code
+            </a>
+          </div>
           <div class="progress-bar">
             <div class="progress" data-width="100"></div>
           </div>
         </div>
       </div>
       <div class="project-card fade-in">
-        <div class="project-img">
+        <div class="project-img" onclick="showProjectModal('Task Management App', 'A productivity application for managing daily tasks and projects with team collaboration features. Built with Vue.js and Firebase.', 'Vue.js, Firebase, Vuetify, Cloud Firestore')">
           <i class="fas fa-tasks"></i>
         </div>
         <div class="project-content">
           <span class="project-status status-inprogress">In Progress</span>
           <h3>Task Management App</h3>
           <p>A productivity application for managing daily tasks and projects with team collaboration features. Built with Vue.js and Firebase.</p>
+          <div class="project-tech">
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">Vuetify</span>
+            <span class="tech-tag">Firestore</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link">
+              <i class="fas fa-eye"></i> View Demo
+            </a>
+            <a href="#" class="project-link">
+              <i class="fab fa-github"></i> Source Code
+            </a>
+          </div>
           <div class="progress-bar">
             <div class="progress" data-width="75"></div>
           </div>
@@ -1914,6 +2698,52 @@ footer::after {
   </div>
 </section>
 
+<!-- Testimonials Section -->
+<section class="testimonials">
+  <div class="container">
+    <h2 class="section-title fade-in">Testimonials</h2>
+    <p class="section-subtitle fade-in">What clients and colleagues say about working with me.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-content">
+          "En Vichet is an exceptional developer with a keen eye for design. His attention to detail and commitment to quality made our project a huge success. I highly recommend him for any web development needs."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-img">SC</div>
+          <div class="author-info">
+            <h4>Sokunthearith Chheang</h4>
+            <p>Project Manager, Tech Solutions Cambodia</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-content">
+          "Working with En Vichet was a pleasure. He delivered our e-commerce platform ahead of schedule and exceeded our expectations. His technical skills and communication abilities are outstanding."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-img">PV</div>
+          <div class="author-info">
+            <h4>Phalla Vann</h4>
+            <p>CEO, Digital Innovations Co.</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-content">
+          "En Vichet's portfolio website is a perfect showcase of his talents. The design is modern, the functionality is seamless, and the user experience is exceptional. He truly walks the talk."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-img">KT</div>
+          <div class="author-info">
+            <h4>Khemara Thong</h4>
+            <p>Senior Developer, WebTech Cambodia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Contact Section -->
 <section class="contact" id="contact">
   <div class="container">
@@ -1946,6 +2776,15 @@ footer::after {
           <div>
             <h3>Phone</h3>
             <p>+855 12 345 678</p>
+          </div>
+        </div>
+        <div class="contact-item fade-in">
+          <div class="contact-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div>
+            <h3>Availability</h3>
+            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
           </div>
         </div>
       </div>
@@ -1982,6 +2821,7 @@ footer::after {
         <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
         <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
         <a href="#" class="social-link" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+        <a href="#" class="social-link" aria-label="Behance"><i class="fab fa-behance"></i></a>
       </div>
     </div>
     <div class="copyright">
@@ -2217,7 +3057,7 @@ function animateProgressBars() {
 
 // Check scroll position for fade-in animations
 function checkScroll() {
-  const fadeElements = document.querySelectorAll('.fade-in, .timeline-item, .project-card');
+  const fadeElements = document.querySelectorAll('.fade-in, .timeline-item, .project-card, .experience-card, .education-item');
   
   fadeElements.forEach(element => {
     const elementTop = element.getBoundingClientRect().top;
@@ -2248,6 +3088,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// Project modal function
+function showProjectModal(title, description, technologies) {
+  alert(`Project: ${title}\n\n${description}\n\nTechnologies: ${technologies}`);
+}
 
 // Add keyboard accessibility
 document.addEventListener('keydown', function(e) {
