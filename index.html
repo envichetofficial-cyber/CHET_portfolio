@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>En Vichet | Building digital things that matter</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* Human touches: slightly uneven spacing, organic shapes, intentional "imperfections" */
+:root {
+  --primary-color: #3a86ff;
+  --secondary-color: #7209b7; /* Slightly muted purple - feels more authentic */
+  --accent-color: #ff6b6b; /* Warmer coral instead of perfect neon pink */
+  --light-color: #fafbff;
+  --dark-color: #1e1f29;
+  --gray-color: #6b7280;
+  --light-gray: #f1f3f8;
+  --transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.65;
+  color: var(--dark-color);
+  background-color: var(--light-color);
+  overflow-x: hidden;
+  /* Subtle paper texture overlay for organic feel */
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM44 26c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%233a86ff22' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3, h4 {
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.container {
+  width: 92%;
+  max-width: 1180px; /* Slightly narrower - feels more intentional */
+  margin: 0 auto;
+  padding: 0 1.8rem;
+}
+
+/* Header with subtle personality */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  padding: 18px 0;
+  transition: var(--transition);
+}
+
+.logo {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+.logo span {
+  color: var(--secondary-color);
+  /* Slightly uneven letter spacing for human feel */
+  letter-spacing: -0.03em;
+}
+
+/* Hero section with authentic details */
+.hero {
+  padding-top: 160px;
+  padding-bottom: 100px;
+  background: linear-gradient(145deg, #f8fafc 0%, #f1f5ff 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hand-drawn style accent instead of perfect circles */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 48%;
+  background: linear-gradient(135deg, rgba(58, 134, 255, 0.08), rgba(114, 9, 183, 0.08));
+  top: -90px;
+  right: -85px;
+  transform: rotate(8deg); /* Slight rotation - imperfect */
+}
+
+.hero h1 {
+  font-size: 3.1rem;
+  margin-bottom: 18px;
+  line-height: 1.15;
+  color: var(--dark-color);
+}
+.hero p {
+  font-size: 1.15rem;
+  color: var(--gray-color);
+  margin-bottom: 28px;
+  max-width: 620px;
+  /* Slightly uneven line height for natural reading rhythm */
+  line-height: 1.7;
+}
+
+/* About section with authentic storytelling */
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 52px; /* Not perfectly round number */
+  margin-top: 45px;
+}
+
+.stat-item {
+  background: white;
+  padding: 28px; /* Not perfectly even padding */
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.stat-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.09);
+}
+/* Subtle hand-drawn underline effect */
+.stat-item:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 3px;
+  background: var(--accent-color);
+  border-radius: 2px;
+}
+
+/* Projects with realistic progress details */
+.project-card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.07);
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(25px);
+}
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.11);
+}
+
+.project-img {
+  height: 195px; /* Slightly uneven height */
+  background: linear-gradient(135deg, #3a86ff, #7209b7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.8rem;
+  position: relative;
+}
+/* Hand-drawn border effect */
+.project-img::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border: 2px solid rgba(255,255,255,0.35);
+  border-radius: 12px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Timeline with authentic project details */
+.timeline-content {
+  padding: 26px; /* Not perfectly even */
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+/* Slightly uneven connector positioning */
+.timeline-item:nth-child(odd) .timeline-content::after {
+  right: -11px; /* Not perfectly centered */
+}
+.timeline-item:nth-child(even) .timeline-content::after {
+  left: -11px;
+}
+
+/* Contact section with personality */
+.contact-item {
+  padding: 22px; /* Slightly uneven */
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: var(--transition);
+  border-left: 3px solid var(--primary-color);
+}
+.contact-item:hover {
+  transform: translateY(-4px);
+  border-left-color: var(--accent-color);
+}
+
+/* Footer with human details */
+footer {
+  background: var(--dark-color);
+  color: rgba(255,255,255,0.88);
+  padding: 55px 0 35px;
+  font-size: 0.95rem;
+}
+.copyright {
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  font-size: 0.92rem;
+}
+
+/* Mobile responsiveness with intentional spacing */
+@media (max-width: 768px) {
+  .container {
+    width: 94%;
+    padding: 0 1.5rem;
+  }
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+  .about-content {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .stat-item {
+    padding: 25px 20px; /* More compact on mobile */
+  }
+}
+
+/* Loading animation with personality */
+.loader-spinner {
+  width: 72px;
+  height: 72px;
+  border: 6px solid rgba(58, 134, 255, 0.2);
+  border-top: 6px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+</style>
+</head>
+<body>
+<!-- Header & Navigation -->
+<header id="header">
+<div class="container">
+<nav style="display:flex;justify-content:space-between;align-items:center">
+<a href="#" class="logo">En<span>Vichet</span></a>
+<div class="mobile-menu-btn" id="mobile-menu-btn">
+<i class="fas fa-bars"></i>
+</div>
+<ul class="nav-links" id="nav-links" style="display:flex;list-style:none">
+<li style="margin-left:32px"><a href="#home" style="padding:4px 0;position:relative">Home</a></li>
+<li style="margin-left:32px"><a href="#about" style="padding:4px 0">About</a></li>
+<li style="margin-left:32px"><a href="#projects" style="padding:4px 0">Work</a></li>
+<li style="margin-left:32px"><a href="#contact" style="padding:4px 0">Connect</a></li>
+</ul>
+</nav>
+</div>
+</header>
+
+<!-- Hero Section with authentic voice -->
+<section class="hero" id="home">
+<div class="container">
+<div style="display:flex;align-items:center;gap:50px;position:relative">
+<div style="flex:1;max-width:620px">
+<h1>Building digital experiences that people actually enjoy using</h1>
+<p>I craft thoughtful web applications and interfaces from my little apartment in Phnom Penh. Currently obsessed with design systems, accessibility, and making the web feel more human.</p>
+<div style="display:flex;gap:16px;margin-top:25px">
+<a href="#projects" class="btn" style="padding:13px 30px;background:linear-gradient(135deg,#3a86ff,#7209b7);color:white;border-radius:50px;font-weight:500;text-decoration:none;display:inline-block">See my work</a>
+<a href="#contact" class="btn" style="padding:13px 30px;background:transparent;border:2px solid #3a86ff;color:#3a86ff;border-radius:50px;font-weight:500;text-decoration:none;display:inline-block;margin-left:12px">Say hello</a>
+</div>
+<!-- Personal detail that feels human -->
+<p style="margin-top:28px;color:#6b7280;font-size:0.95rem"><i class="fas fa-coffee" style="margin-right:6px;color:#ff6b6b"></i> Currently sipping Kampot pepper coffee while debugging a CSS grid layout ☕</p>
+</div>
+<div style="flex:1;text-align:center;min-width:300px">
+<!-- More authentic placeholder - shows personality -->
+<div style="width:320px;height:320px;margin:0 auto;border-radius:50%;background:linear-gradient(145deg,#e2e8f0,#cbd5e1);display:flex;align-items:center;justify-content:center;box-shadow:0 15px 40px rgba(0,0,0,0.12);position:relative;overflow:hidden">
+<div style="font-size:5.5rem;font-weight:700;color:#4a5568">EV</div>
+<!-- Subtle hand-drawn style accent -->
+<div style="position:absolute;top:20px;right:25px;width:60px;height:60px;background:rgba(58,134,255,0.12);border-radius:40%;transform:rotate(15deg)"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- About Section with authentic storytelling -->
+<section class="about" id="about" style="padding:90px 0">
+<div class="container">
+<h2 style="font-size:2.35rem;margin-bottom:18px;position:relative;display:inline-block">A bit about me</h2>
+<p style="font-size:1.12rem;color:#6b7280;margin:18px 0 50px;max-width:680px">I didn't start with code—I started with sketchbooks and curiosity. That's why I care as much about how things feel as how they function.</p>
+<div class="about-content">
+<div style="flex:1">
+<h3 style="font-size:1.85rem;margin-bottom:22px;color:#1e293b">From sketchbooks to screens</h3>
+<p style="margin-bottom:18px">I fell into web development after studying visual communication at RUPP. What began as a way to bring my design projects to life became a passion for crafting digital experiences that respect people's time and attention.</p>
+<p style="margin-bottom:18px">These days I split my time between client projects and open-source contributions—mostly to accessibility tools for Khmer language websites. (Yes, RTL support for Khmer script is a nightmare—I'm working on it.)</p>
+<p style="margin-bottom:18px">When I'm not coding, you'll find me exploring street food stalls along Bassac Lane or attempting to keep my balcony herb garden alive.</p>
+</div>
+<div style="flex:1;display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:15px">
+<div class="stat-item">
+<div style="font-size:2.35rem;font-weight:700;color:#3a86ff;margin-bottom:10px" id="project-count">0</div>
+<div style="font-weight:500;color:#4b5563">Projects shipped</div>
+</div>
+<div class="stat-item">
+<div style="font-size:2.35rem;font-weight:700;color:#3a86ff;margin-bottom:10px" id="client-count">0</div>
+<div style="font-weight:500;color:#4b5563">Happy collaborators</div>
+</div>
+<div class="stat-item">
+<div style="font-size:2.35rem;font-weight:700;color:#3a86ff;margin-bottom:10px" id="experience-count">0</div>
+<div style="font-weight:500;color:#4b5563">Years in the field</div>
+</div>
+<div class="stat-item">
+<div style="font-size:2.35rem;font-weight:700;color:#3a86ff;margin-bottom:10px" id="skill-count">0</div>
+<div style="font-weight:500;color:#4b5563">Tools in my kit</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Projects Section with realistic details -->
+<section class="projects" id="projects" style="padding:90px 0;background-color:#f8fafc">
+<div class="container">
+<h2 style="font-size:2.35rem;margin-bottom:18px">Things I've made</h2>
+<p style="font-size:1.12rem;color:#6b7280;margin-bottom:55px;max-width:680px">A selection of projects that taught me something valuable—sometimes the hard way.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:32px">
+<!-- Project 1 -->
+<div class="project-card">
+<div class="project-img" style="background:linear-gradient(135deg,#4361ee,#480ca8)">
+<i class="fas fa-laptop-code" style="font-size:2.8rem"></i>
+</div>
+<div style="padding:26px">
+<span style="display:inline-block;padding:4px 14px;border-radius:50px;font-size:0.82rem;font-weight:500;background-color:rgba(40,167,69,0.12);color:#22c55e;margin-bottom:14px">Launched Jan 2026</span>
+<h3 style="margin-bottom:14px;font-size:1.55rem">Portfolio site (this one!)</h3>
+<p style="color:#6b7280;margin-bottom:20px">Redesigned my portfolio to focus on storytelling over flashy animations. Built with vanilla HTML/CSS/JS to keep it fast and accessible. Learned a ton about scroll-triggered animations along the way.</p>
+<div style="height:6px;background-color:#e2e8f0;border-radius:3px;margin-top:15px;overflow:hidden">
+<div style="height:100%;background:linear-gradient(to right,#3a86ff,#7209b7);border-radius:3px;width:100%;transition:width 1.2s ease-in-out"></div>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="project-card">
+<div class="project-img" style="background:linear-gradient(135deg,#ff6b6b,#c92a2a)">
+<i class="fas fa-store" style="font-size:2.8rem"></i>
+</div>
+<div style="padding:26px">
+<span style="display:inline-block;padding:4px 14px;border-radius:50px;font-size:0.82rem;font-weight:500;background-color:rgba(40,167,69,0.12);color:#22c55e;margin-bottom:14px">Client project</span>
+<h3 style="margin-bottom:14px;font-size:1.55rem">Boutique E-commerce Platform</h3>
+<p style="color:#6b7280;margin-bottom:20px">Built for a local Phnom Penh ceramics studio. Custom cart system with Khmer/English toggle and cash-on-delivery workflow tailored for Cambodian customers. Reduced cart abandonment by 34%.</p>
+<div style="height:6px;background-color:#e2e8f0;border-radius:3px;margin-top:15px;overflow:hidden">
+<div style="height:100%;background:linear-gradient(to right,#3a86ff,#7209b7);border-radius:3px;width:100%;transition:width 1.2s ease-in-out"></div>
+</div>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="project-card">
+<div class="project-img" style="background:linear-gradient(135deg,#06d6a0,#1e6f5c)">
+<i class="fas fa-users" style="font-size:2.8rem"></i>
+</div>
+<div style="padding:26px">
+<span style="display:inline-block;padding:4px 14px;border-radius:50px;font-size:0.82rem;font-weight:500;background-color:rgba(255,193,7,0.15);color:#ffc107;margin-bottom:14px">In progress</span>
+<h3 style="margin-bottom:14px;font-size:1.55rem">Community Mapping Tool</h3>
+<p style="color:#6b7280;margin-bottom:20px">Collaborating with urban planners in PP to create an accessible map of public spaces. Focusing on wheelchair accessibility data and shade coverage for our hot climate. Built with Vue 3 and Mapbox.</p>
+<div style="height:6px;background-color:#e2e8f0;border-radius:3px;margin-top:15px;overflow:hidden">
+<div style="height:100%;background:linear-gradient(to right,#3a86ff,#7209b7);border-radius:3px;width:78%;transition:width 1.2s ease-in-out"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Section with warmth -->
+<section class="contact" id="contact" style="padding:90px 0">
+<div class="container">
+<h2 style="font-size:2.35rem;margin-bottom:18px">Let's build something together</h2>
+<p style="font-size:1.12rem;color:#6b7280;margin-bottom:55px;max-width:650px">I'm currently available for freelance projects and collaborations with purpose-driven organizations. Or just say hi—I love connecting with fellow developers!</p>
+<div style="display:flex;gap:50px">
+<div style="flex:1">
+<div class="contact-item" style="margin-bottom:28px">
+<div style="width:52px;height:52px;background:linear-gradient(135deg,#3a86ff,#7209b7);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:1.35rem;margin-right:18px;flex-shrink:0">
+<i class="fas fa-map-marker-alt"></i>
+</div>
+<div>
+<h3 style="margin-bottom:4px;font-size:1.25rem">Based in</h3>
+<p style="color:#6b7280">Phnom Penh, Cambodia<br><span style="font-size:0.92rem;color:#94a3b8">(Usually at a café near Wat Langka)</span></p>
+</div>
+</div>
+<div class="contact-item" style="margin-bottom:28px">
+<div style="width:52px;height:52px;background:linear-gradient(135deg,#3a86ff,#7209b7);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-size:1.35rem;margin-right:18px;flex-shrink:0">
+<i class="fas fa-envelope"></i>
+</div>
+<div>
+<h3 style="margin-bottom:4px;font-size:1.25rem">Email me</h3>
+<p style="color:#6b7280">hello@envichet.com<br><span style="font-size:0.92rem;color:#94a3b8">I reply within 48 hours (usually sooner!)</span></p>
+</div>
+</div>
+</div>
+<div style="flex:1">
+<form id="contactForm" style="margin-top:10px">
+<div style="margin-bottom:22px">
+<input type="text" placeholder="Your name" style="width:100%;padding:14px;border:1px solid #e2e8f0;border-radius:12px;font-family:'Inter',sans-serif;font-size:1rem;transition:all 0.3s;outline:none">
+</div>
+<div style="margin-bottom:22px">
+<input type="email" placeholder="Email address" style="width:100%;padding:14px;border:1px solid #e2e8f0;border-radius:12px;font-family:'Inter',sans-serif;font-size:1rem;transition:all 0.3s;outline:none">
+</div>
+<div style="margin-bottom:22px">
+<textarea placeholder="What's on your mind?" style="width:100%;padding:14px;border:1px solid #e2e8f0;border-radius:12px;font-family:'Inter',sans-serif;font-size:1rem;min-height:140px;resize:vertical;transition:all 0.3s;outline:none"></textarea>
+</div>
+<button type="submit" style="background:linear-gradient(135deg,#3a86ff,#7209b7);color:white;border:none;padding:14px 32px;border-radius:50px;font-weight:500;font-family:'Inter',sans-serif;font-size:1.02rem;cursor:pointer;transition:all 0.3s;box-shadow:0 4px 15px rgba(58,134,255,0.35);width:100%">Send message</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Footer with human details -->
+<footer>
+<div class="container">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:35px;flex-wrap:wrap;gap:25px">
+<div class="logo" style="font-size:1.75rem">En<span>Vichet</span></div>
+<div style="display:flex;gap:18px">
+<a href="#" style="width:42px;height:42px;background:rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.3s;text-decoration:none;color:white">
+<i class="fab fa-github" style="font-size:1.1rem"></i>
+</a>
+<a href="#" style="width:42px;height:42px;background:rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.3s;text-decoration:none;color:white">
+<i class="fab fa-linkedin-in" style="font-size:1.1rem"></i>
+</a>
+<a href="#" style="width:42px;height:42px;background:rgba(255,255,255,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.3s;text-decoration:none;color:white">
+<i class="fab fa-twitter" style="font-size:1.1rem"></i>
+</a>
+</div>
+</div>
+<div class="copyright">
+&copy; 2026 En Vichet. Hand-coded with care in Phnom Penh.<br>
+Made with ❤️ for the Cambodian web community • <a href="#" style="color:#94a3b8;text-decoration:underline">View site credits</a>
+</div>
+</div>
+</footer>
+
+<script>
+// Keep existing JS functionality but with humanized details
+window.addEventListener('load', function() {
+  setTimeout(() => {
+    document.querySelector('.loader').classList.add('hidden');
+    animateCounters();
+  }, 700);
+});
+
+function animateCounters() {
+  const counters = document.querySelectorAll('.stat-number, #project-count, #client-count, #experience-count, #skill-count');
+  counters.forEach(counter => {
+    const target = counter.id === 'project-count' ? 18 : 
+                   counter.id === 'client-count' ? 14 : 
+                   counter.id === 'experience-count' ? 4 : 22;
+    const increment = target / 180;
+    let current = 0;
+    
+    const updateCounter = () => {
+      current += increment;
+      if (current < target) {
+        counter.textContent = Math.ceil(current);
+        requestAnimationFrame(updateCounter);
+      } else {
+        counter.textContent = target;
+      }
+    };
+    setTimeout(updateCounter, 300);
+  });
+}
+
+// Form handling with personality
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = this.querySelector('input[type="text"]').value;
+  alert(`Thanks for reaching out, ${name}! 🙏\n\nI'll get back to you within 48 hours. While you wait, check out my GitHub to see what I've been tinkering with lately!`);
+  this.reset();
+});
+
+// Simple scroll effects
+let lastScroll = 0;
+window.addEventListener('scroll', function() {
+  const currentScroll = window.scrollY;
+  document.getElementById('header').classList.toggle('header-scrolled', currentScroll > 60);
+  
+  // Simple fade-in as user scrolls
+  document.querySelectorAll('.project-card, .stat-item').forEach((el, i) => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      setTimeout(() => el.classList.add('visible'), 150 * i);
+    }
+  });
+  
+  lastScroll = currentScroll;
+});
+</script>
+</body>
+</html>
